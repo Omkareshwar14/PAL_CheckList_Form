@@ -1,0 +1,404 @@
+<template>
+<!-- 1st page start here-->
+
+    <template if:true={handleFirstPage}>
+<form>
+
+    <div class="slds-box" style="background-color:#FFCD05;padding: 3rem;">
+        <!--For Static Image-->       
+                <div class="slds-media slds-media_center slds-wrap slds-p-around_xx-large">
+                                <div class="slds-media__figure" style="padding:10px">
+                                        <img src={imageUrl} width="180" height="200" alt="Avatar" />
+                                </div>
+                                
+                                <div class="slds-media__body slds-text-align_center slds-p-around_small" style="color: #363636;font-family:Montserrat;font-size: 24px;font-weight: 600;line-height: 29px;font-family: Arial;">
+                                                            <p>POOL ACTIVITY LEVEL(PAL) CHECKLIST</p>                                    
+                                </div>
+                                
+                </div>
+        
+        <!--Upto Static Image-->        
+        </div>
+
+    <div class="slds-p-around_xx-large slds-m-bottom_xx-small" style="background-color:#F2F2F2;">
+
+                <div class="slds-text-align_left " style="padding-left:10px; color: #3f3f3f;font-family: Arial;font-size: 20px;font-weight: bold;  " >Information of Person Living with Dementia</div>
+                <br/>   
+                <div class="slds-clearfix">
+                            <div class="slds-float_right">
+                                   
+                            </div>
+                </div> 
+                <div class="slds-grid slds-gutters slds-wrap">
+                    
+                   
+                            
+            
+                            <div class="slds-size_1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3  slds-p-around_medium">
+                                <label  class="slds-form-element__label" style="color: #3f3f3f;font-family:Montserrat;font-size: 1.1em; font-weight:bold;font-family: Arial; ">Name (as per NRIC)                
+                                    <abbr class="slds-required" style="font-size: 1em;" title="required">*</abbr>
+                                </label>                  
+                                    <lightning-input value={LastName} required="true" class="nricNamePwdClass" variant = "label-hidden" type="Text" onchange={handleNRICName}  ></lightning-input>
+                            </div>
+                            <div class="slds-size_1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3  slds-p-around_medium">
+                                <label  class="slds-form-element__label" style="color: #3f3f3f;font-family:Montserrat;font-size: 1.1em; font-weight:bold; font-family: Arial; " > NRIC No.               
+                                    <abbr class="slds-required" style="font-size: 1em;" title="required">*</abbr>
+                                </label>                  
+                                    <lightning-input value={NRIC_num} required="true" class="nricNamePwdClass" variant = "label-hidden" type="Text" onchange={handleNRICNo} minlength="9" message-when-too-short="NRIC No. length should be 9." maxlength="9" ></lightning-input>
+                            </div>
+            
+                            
+            
+                </div>
+                
+            
+    </div><!-- Background Colour Div ends here -->   
+
+    
+    
+    
+
+    <div class="slds-p-around_xx-large slds-m-bottom_xx-small" style="background-color:#F2F2F2;">
+
+        <h3 style="font-family: Arial; font-weight:bold" >Note</h3>
+        <br/>
+        <p style="color:rgb(77, 15, 135); font-weight:lighter;  ">Thinking of the last two weeks, please circle the statements that represents the person's ability in each of the repective activities. </p>
+        <br/>
+        <p style="font-family: Arial; font-weight:bold" >1. Bathing / Washing</p>
+        <br/>
+        
+        <div class="slds-is-absolute slds-p-left_xx-large slds-m-top_x-small" >
+            <p>Can bathe/wash independently, sometimes with a little help to start</p>
+            <p>Needs soap put on flannel and one-step-at-a-time directions to wash</p>
+            <p>Mainly relies on others but will wipe own face and hands if encouraged</p>
+            <p>Totally dependent and needs full assistance to wash or bathe</p>
+
+        </div>
+        <template if:true={picklistValuesQue1.data}>
+        <lightning-radio-group 
+                name="radioGroup01"           
+                options={optionsQue1}
+                value={selectedvalue}
+                type="radio" onchange={handleChangeMcq01}>
+        </lightning-radio-group> 
+        </template>
+        
+        
+       
+
+        <div  style="position:absolute; padding-left:60px; margin-top:53px; " >
+            <p>Plans what to wear, selects own clothing from cupboards; dresses in correct order</p>
+            <p>Needs help to plan what to wear but recognizes items and how to wear them; needs help with order of dressing</p>
+            <p>Needs help to plan, and with order of dressing, but can carry out small activities if someone directs each step</p>
+            <p>Totally dependent on someone to plan, sequence and complete dressing, may move limbs to assist</p>
+        
+        </div>
+
+        <p style="font-family: Arial; font-weight:bold" >2. Getting dressed</p>
+        <br/>
+        <lightning-radio-group name="radioGroup02" 
+                          
+                          
+                          options={options02}
+                          value={selectedvalue02}
+                          type="radio" onchange={handleChangeMcq02}  ></lightning-radio-group>
+                         
+
+        <div style="position:absolute; padding-left:60px; margin-top:50px; " >
+            <p>Eats independently and appropriately using the correct cutlery</p>
+            <p>Eats using a spoon and/or needs food to be cut up into small pieces</p>
+            <p>Only uses fingers to eat food</p>
+            <p>Relies on others to be fed</p>
+        
+        </div>
+
+            <p style="font-family: Arial; font-weight:bold" >3. Eating</p>
+        <br/>
+        <lightning-radio-group name="radioGroup03" 
+                          
+                          
+                          options={options03}
+                          value={selectedvalue03}
+                          type="radio" onchange={handleChangeMcq03}  ></lightning-radio-group>
+                      
+        
+        
+        <div style="position:absolute; padding-left:60px; margin-top:50px; " >
+            <p>Initiates social contact and responds to the needs of others</p>
+            <p>Aware of others and will seek interaction, but may be more concerned with own needs</p>
+            <p>Aware of others but waits for others to make the first social contact</p>
+            <p>May not show an awareness of the presence of others unless in direct physical contact</p>
+        
+        </div>
+
+
+
+        <p style="font-family: Arial; font-weight:bold" >4. Contact with others</p>
+        <br/>
+        <lightning-radio-group name="radioGroup04" 
+                          
+                          
+                          options={options04}
+                          value={selectedvalue04}
+                          type="radio" onchange={handleChangeMcq04}  ></lightning-radio-group>
+        
+        
+        
+        <div class="slds-grid slds-grid_align-end" style="--sds-c-button-brand-color-background: #FFCD05; --sds-c-button-brand-text-color: #50276B;">
+            <div class="slds-col slds-m-right_small">
+                <lightning-button class="button" style="font-size: 18px;" variant="brand" icon-name="utility:chevronright" label="Next" onclick={handleNextClick} ></lightning-button>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+</template>
+<!-- 1st page end here-->
+
+<!-- 2nd page start here-->
+<template if:true={handleNextPage}>
+
+   <form>
+
+    <div class="slds-box" style="background-color:#FFCD05;padding: 3rem;">
+        <!--For Static Image-->       
+                <div class="slds-media slds-media_center slds-wrap slds-p-around_xx-large">
+                                <div class="slds-media__figure" style="padding:10px">
+                                        <img src={imageUrl} width="180" height="200" alt="Avatar" />
+                                </div>
+                                
+                                <div class="slds-media__body slds-text-align_center slds-p-around_small" style="color: #363636;font-family:Montserrat;font-size: 24px;font-weight: 600;line-height: 29px;font-family: Arial;">
+                                                            <p>POOL ACTIVITY LEVEL(PAL) CHECKLIST</p>                                    
+                                </div>
+                                
+                </div>
+        
+        <!--Upto Static Image-->        
+        </div>
+
+    <div class="slds-p-around_xx-large slds-m-bottom_xx-small" style="background-color:#F2F2F2;">
+
+                
+                <br/>   
+            <!--5th question starts here-->    
+                <p style="font-family: Arial; font-weight:bold" >5. Group work-skills </p>
+                <br/>
+                
+                <div style="position:absolute; padding-left:60px; margin-top:5px; " >
+                    <p>Engages with others in a group activity, can take turns with the activity/tools</p>
+                    <p>Occasionally engages with others in a group, moving in and out of the group at whom</p>
+                    <p>Aware of others in the group and will work alongside others although tends to focus on own</p>
+                    <p>Does not snow awareness of others in the group unless close one-to-one attention is experienced</p>
+        
+                </div>
+                <lightning-radio-group 
+                        name="radioGroup05"           
+                        options={options05}
+                        value={selectedvalue05}
+                        type="radio" onchange={handleChangeMcq05} >
+                </lightning-radio-group> 
+                
+                
+                
+                <p style="font-family: Arial; font-weight:bold" >6. Communication skills</p>
+                <br/>
+                
+                <div style="position:absolute; padding-left:60px; margin-top:5px; " >
+                    <p>Is aware of appropriate interaction, can chat coherently and is able to use complex language skills</p>
+                    <p>Body language may be inappropriate and may not always be coherent, but can use simple language skills</p>
+                    <p>Responses to verbal interaction may be mainly through body language, comprehension is limited</p>
+                    <p>Can only respond to direct physical contact from others through touch, eye contact or facial expression</p>
+        
+                </div>
+                <lightning-radio-group 
+                        name="radioGroup06"           
+                        options={options06}
+                        value={selectedvalue06}
+                        type="radio" onchange={handleChangeMcq06} >
+                </lightning-radio-group> 
+               
+
+
+
+                <p style="font-family: Arial; font-weight:bold" >7. Practical activities (craft, domestic chores, gardening)</p>
+                <br/>
+                
+                <div  style="position:absolute; padding-left:60px; margin-top:5px; " >
+                    <p>Can plan to carry out an activity, hold the goal in mind and work through a familiar sequence; may need help solving problems</p>
+                    <p>More interested in the making or doing than in the end result, needs prompting to remember purpose, can get distracted</p>
+                    <p>Activities need to be broken down and presented one step at a time; multisensory stimulation can help to hold the attention</p>
+                    <p>Unable to ‘do’ activities, but responds to the close contact of others and experiencing physical sensations</p>
+                  
+                </div>
+                <lightning-radio-group 
+                        name="radioGroup07"           
+                        options={options07}
+                        value={selectedvalue07}
+                        type="radio" onchange={handleChangeMcq07} >
+                </lightning-radio-group> 
+                
+
+
+                <p style="font-family: Arial; font-weight:bold" >8. Use of objects</p>
+                <br/>
+                
+                <div style="position:absolute; padding-left:60px; margin-top:5px; " >
+                    <p>Plans to use and looks for objects that are not visible; may struggle if objects are not in usual / familiar places (i.e. toiletries in a cupboard below washbasin)</p>
+                    <p>Selects objects appropriately only if in view (i.e. toiletries on a shelf next to washbasin)</p>
+                    <p>Randomly uses objects as chances upon them; may use inappropriately</p>
+                    <p>May grip objects when placed in the hand but will not attempt to use them</p>
+                   
+
+        
+                </div>
+                <lightning-radio-group 
+                        name="radioGroup08"           
+                        options={options08}
+                        value={selectedvalue08}
+                        type="radio" onchange={handleChangeMcq08} >
+                </lightning-radio-group> 
+                
+
+
+                <p style="font-family: Arial; font-weight:bold" >9 . Looking at a newspaper / magazin</p>
+                <br/>
+                
+                <div style="position:absolute; padding-left:60px; margin-top:5px; " >
+                    <p>Comprehends and shows interest in the content, turns the pages and looks at headlines and pictures</p>
+                    <p>Turns the pages randomly, only attending to items pointed out by others</p>
+                    <p>Will hold and may feel the paper, but will not turn the pages unless directed and will not show interest in the content</p>
+                    <p>May grip the paper if it is placed in the hand but may not be able to release grip; or may not take hold of the paper</p>
+        
+                </div>
+                <lightning-radio-group 
+                        name="radioGroup09"           
+                        options={options09}
+                        value={selectedvalue09}
+                        type="radio" onchange={handleChangeMcq09} >
+                </lightning-radio-group> 
+                
+
+
+        <h3 style="font-family: Arial; font-weight:bold" >Note</h3>
+        <br/>
+        <p style="color:rgb(77, 15, 135); font-weight:lighter;  ">Select the appropriate PAL Profile to act as a general guide to engaging the person with dementia in a variety of activities. </p>
+        <br/>
+
+        
+            <lightning-button class="slds-button_stretch button slds-grid slds-grid_align-end" style="font-size: 18px; --sds-c-button-brand-color-background: #FFCD05; --sds-c-button-brand-text-color: #50276B;" variant="brand" icon-name="utility:save" onclick={openModal} label="Save"></lightning-button>
+
+
+        <div class="slds-p-around_xx-large slds-m-bottom_xx-small" style="background-color:#F2F2F2;">
+            <div class="slds-m-bottom_xx-small" style="height: 6px;"></div>
+    <div class="slds-box slds-theme" style="background-color:#F2F2F2;padding: 3rem;" >
+                    
+                   
+                            
+            
+        <div class="slds-grid slds-gutters slds-wrap" style="font-family: Arial; font-weight:bold">
+            <div class="slds-size_1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3  slds-p-around_medium">
+                <label class="slds-form-element__label" style="color: #3f3f3f;font-size: 1.1em;">Name (Staff)                 
+                    <abbr class="slds-required" style="font-size: 1em;" title="required">*</abbr>
+                </label>                  
+                <lightning-input class="staffNameClass" variant = "label-hidden" type="Text" value={currentUserName} readonly></lightning-input>
+            </div>
+        </div>
+            <div class="slds-size_1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3  slds-p-around_medium">
+                    <label  class="slds-form-element__label" style="color: #3f3f3f;font-family:Montserrat;font-size: 1.1em; font-weight:bold; font-family: Arial; " > Effective Date of PAL               
+                        
+                    </label>                  
+                        <lightning-input value={Effective_date} type="date" class="nricNamePwdClass" variant = "label-hidden" onchange={handleDate}></lightning-input>
+            </div>
+
+            <div class="slds-size_1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3  slds-p-around_medium">
+                <label  class="slds-form-element__label" style="color: #3f3f3f;font-family:Montserrat;font-size: 1.1em; font-weight:bold; font-family: Arial; " > Stage           
+                </label>                  
+                <lightning-combobox value={Stage_name}  onchange={handlePickChange} name="Prepost" placeholder="Select option" aria-required="true" type="test"  options={preValues.data.values} ></lightning-combobox>
+        </div>
+
+                
+
+    </div>    
+
+
+            <div class="slds-grid slds-grid_align-end">
+                <div class="slds-col slds-m-right_small">
+                    <lightning-button class="slds-button_stretch button" style="font-size: 18px; --sds-c-button-brand-color-background: #fefefe; --sds-c-button-brand-text-color: #50276B;" variant="brand" icon-name="utility:back" label="Back"  onclick={handleBack}  ></lightning-button>        
+                    <lightning-button class="slds-button_stretch button" style="font-size: 18px; --sds-c-button-brand-color-background: #FFCD05; --sds-c-button-brand-text-color: #50276B;" variant="brand" icon-name="utility:save" label="Submit" onclick={handleSubmitButton}></lightning-button>            
+                </div> 
+            </div>   
+            
+        </div>
+            
+    </div>
+
+    
+
+</form>
+
+
+</template>
+
+<template if:true={isModalOpen}>
+    <!-- Modal/Popup Box LWC starts here -->
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <!-- Modal/Popup Box LWC header here -->
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close"
+                        alternative-text="close"
+                        variant="inverse"
+                        size="small" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Total Score of P, E, R, S</h2>
+            </header>
+            <!-- Modal/Popup Box LWC body starts here -->
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <p><b>Total for Planned(P) : {ans1}</b></p>
+                <p><b>Total for Exploratory(E) :{ans2}</b></p>
+                <p><b>Total for Sensory(S) : {ans3}</b></p>
+                <p><b>Total for Refex(R) : {ans4}</b></p>
+
+            </div>
+            <!-- Modal/Popup Box LWC footer starts here -->
+            <footer class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+
+
+</template>
+
+<template if:true={showModal1}>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                
+                <span class="slds-assistive-text">Cancel and close</span>
+              </button>
+              <div class="slds-modal__header">
+                <h1 id="modal-heading-09" class="slds-modal__title slds-hyphenate"></h1>
+              </div>
+              <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-9">
+      
+                <p> Thanks for submitting the form</p>
+              </div>
+              <div class="slds-modal__footer slds-modal__footer_directional">
+                <button class="slds-button slds-button_success" onclick={okButton}>OK</button>
+                
+              </div>
+            </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>
+
+
+    
+</template>
